@@ -1,0 +1,44 @@
+<div class="container">
+  <h2 mat-dialog-title>{{ formName }}</h2>
+  <mat-dialog-content>
+    <mat-form-field class="modal-form">
+      <div class="row">
+        <div class="col-md-6">
+          <label for="manufacturer">Manufacturer: </label>
+          <input id="manufacturer" [(ngModel)]="computer.manufacturer" placeholder="Enter Manufacturer">
+
+          <label for="serialNumber">Serial Number: </label>
+          <input id="serialNumber" [(ngModel)]="computer.serialNumber" placeholder="Enter Serial Number">
+
+          <label for="specifications">Specifications: </label>
+          <input id="specifications" [(ngModel)]="computer.specifications" placeholder="Enter Specifications">
+        </div>
+        <div class="col-md-6 test">
+          <label for="purchaseDate">Purchase Date: </label><br>
+          <input type="datetime-local" [(ngModel)]="computer.purchaseDate"><br>
+
+          <label for="warrantyExpirationDate">Purchase Date: </label><br>
+          <input type="datetime-local" [(ngModel)]="computer.warrantyExpirationDate"><br>
+
+          <!--<div>
+            <label for="warrantyExpirationDate">Warranty Expiry Date: </label>
+            <mat-datepicker-toggle [for]="warrantyExpirationDate"></mat-datepicker-toggle>
+            <mat-datepicker #warrantyExpirationDate></mat-datepicker>
+            <input matInput [matDatepicker]="warrantyExpirationDate" [(ngModel)]="computer.warrantyExpirationDate" readonly>
+          </div>-->
+
+          <label for="url">Enter URL:</label><br>
+          <input id="url" [(ngModel)]="computer.imageUrl" name="url" type="url" placeholder="https://example.com" #urlInput="ngModel" required>
+          <div *ngIf="urlInput.invalid && (urlInput.dirty || urlInput.touched)">
+            <small class="error" *ngIf="urlInput.errors?.['required']">URL is required.</small>
+            <small class="error" *ngIf="urlInput.errors?.['pattern']">Invalid URL format.</small>
+          </div>
+        </div>
+      </div>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button type="submit" class="btn btn-primary btn-md" (click)="submit()">Save</button>
+    <button class="btn btn-danger btn-md" (click)="close()">Exit</button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,49 @@
+<div class="text-center" id="list-header">
+  <h2>Computer List</h2>
+</div>
+<div class="text-center" id="list-header">
+  <h2>{{ computerListStatus }}</h2>
+</div>
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div *ngFor="let computer of computers" class="row" id="computer-item">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <img class="computer-image" src="{{ computer.imageUrl }}" />
+          </div>
+          <div class="col-sm-3">
+            <div class="row">
+              <p><b>Serial Number:</b> {{ computer.serialNumber }}</p>
+              <p><b>Manufacturer:</b> {{ computer.manufacturer }}</p>
+              <p><b>Status:</b> {{ computer.operacionalStatus }} </p>
+              <div><p><b>Specifications:</b></p> <div [innerHTML]="computer.specifications"></div> </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <p><b>Purchased on:</b> {{ computer.purchaseDate | date: 'dd/MM/yyyy' }}</p>
+            <p><b>Warranty untill:</b> {{ computer.warrantyExpirationDate | date: 'dd/MM/yyyy' }}</p>
+            <div *ngIf="hasAssignedOnDate(computer)">
+              <p><b>Assined on:</b> {{ computer.assignedOn | date: 'dd/MM/yyyy' }}</p>
+            </div>
+            <div *ngIf="!hasAssignedOnDate(computer)">
+              <p><b>Assined on:</b> Computer is not assined</p>
+            </div>
+            <p><b>Assined to:</b> {{ computer.assignedTo }}</p>
+          </div>
+          <div class="col-sm-2">
+            <button class="btn btn-warning" (click)="assignUser(computer)">
+              <i class="bi bi-person"></i> Assign
+            </button>
+            <button class="btn btn-primary" (click)="editComputer(computer)">
+              <i class="bi bi-pencil"></i> Edit
+            </button>
+            <button class="btn btn-danger" (click)="deleteComputer(computer.id)">
+              <i class="bi bi-trash"></i> Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

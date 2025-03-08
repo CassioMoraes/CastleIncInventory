@@ -1,0 +1,15 @@
+<div class="container">
+  <h2 mat-dialog-title>User Assignment</h2>
+  <mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Select User:</mat-label>
+      <mat-select [(ngModel)]="selectedUser" >
+        <mat-option *ngFor="let user of users;" [value]="user">{{ user.fullname }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button type="submit" class="btn btn-primary btn-md" (click)="submit()">Assign</button>
+    <button class="btn btn-danger btn-md" (click)="close()">Exit</button>
+  </mat-dialog-actions>
+</div>
