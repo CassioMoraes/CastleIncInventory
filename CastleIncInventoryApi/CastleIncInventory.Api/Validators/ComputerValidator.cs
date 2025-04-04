@@ -22,7 +22,7 @@ namespace CastleIncInventory.Api.Validators
 
         private bool BeValidOperacionalStatus(string description) 
         { 
-            foreach (var field in typeof(OperacionalStatus).GetFields()) 
+            foreach (var field in typeof(OperationalStatus).GetFields()) 
             { 
                 if (field.GetCustomAttribute(typeof(DescriptionAttribute)) is DescriptionAttribute attribute) 
                 { 

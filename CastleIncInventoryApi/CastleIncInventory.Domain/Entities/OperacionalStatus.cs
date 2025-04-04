@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace CastleIncInventory.Domain.Entities
 {
-    public enum OperacionalStatus
+    public enum OperationalStatus
     {
         [Description("New")]
         New,

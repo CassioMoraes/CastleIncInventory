@@ -4,9 +4,9 @@ namespace CastleIncInventory.Domain.Repositories
 {
     public interface IComputerStatusRepository
     {
-        Task<bool> IsStatusAlreadyAdded(uint computerId, OperacionalStatus operacionalStatus);
+        Task<bool> IsStatusAlreadyAdded(uint computerId, OperationalStatus operacionalStatus);
 
-        Task<uint> GetStatusId(OperacionalStatus operacionalStatus);
+        Task<uint> GetStatusId(OperationalStatus operacionalStatus);
 
         void AddStatus(LinkComputerStatus status);
     }

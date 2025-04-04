@@ -6,9 +6,9 @@ namespace CastleIncInventory.Infrastructure.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private readonly CastleIncInventoryContext _context;
+        private readonly CastleIncInventoryDbContext _context;
 
-        public UserRepository(CastleIncInventoryContext context)
+        public UserRepository(CastleIncInventoryDbContext context)
         {
             _context = context;
         }

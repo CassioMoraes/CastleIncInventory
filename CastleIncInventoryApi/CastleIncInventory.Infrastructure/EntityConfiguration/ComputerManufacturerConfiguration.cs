@@ -8,14 +8,12 @@ namespace CastleIncInventory.Infrastructure.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<ComputerManufacturer> entity)
         {
-            entity.ToTable("computer_manufacturer");
-
             entity.HasKey(e => e.Id);
             
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Name).HasColumnName("name")
+            entity.Property(e => e.Id);
+            entity.Property(e => e.Name)
                 .HasConversion(e => e.ToString(), e => (Manufactures)Enum.Parse(typeof(Manufactures), e));
-            entity.Property(e => e.SerialRegex).HasColumnName("serial_regex");
+            entity.Property(e => e.SerialRegex);
         }
     }
 }

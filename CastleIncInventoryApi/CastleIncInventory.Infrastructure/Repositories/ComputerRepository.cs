@@ -6,9 +6,9 @@ namespace CastleIncInventory.Infrastructure.Repositories
 {
     public class ComputerRepository : IComputerRepository
     {
-        private readonly CastleIncInventoryContext _context;
+        private readonly CastleIncInventoryDbContext _context;
 
-        public ComputerRepository(CastleIncInventoryContext context) => _context = context;
+        public ComputerRepository(CastleIncInventoryDbContext context) => _context = context;
 
         public async Task<IEnumerable<Computer>> GetAllAsync()
         {

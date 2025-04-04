@@ -3,9 +3,10 @@ using CastleIncInventory.Infrastructure.EntityConfiguration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
+
 namespace CastleIncInventory.Infrastructure
 {
-    public class CastleIncInventoryContext : DbContext
+    public class CastleIncInventoryDbContext : DbContext
     {
         private readonly IConfiguration _configuration;
 
@@ -16,7 +17,7 @@ namespace CastleIncInventory.Infrastructure
         public DbSet<LinkComputerUser> LinkComputerUsers { get; set; }
         public DbSet<User> Users { get; set; }
 
-        public CastleIncInventoryContext(IConfiguration configuration) { _configuration = configuration; }
+        public CastleIncInventoryDbContext(IConfiguration configuration) { _configuration = configuration; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
             optionsBuilder.UseSqlite(_configuration.GetConnectionString("DefaultConnection"))

@@ -6,19 +6,19 @@ namespace CastleIncInventory.Infrastructure.Repositories
 {
     public class ComputerStatusRepository : IComputerStatusRepository
     {
-        private readonly CastleIncInventoryContext _context;
-        public ComputerStatusRepository(CastleIncInventoryContext context)
+        private readonly CastleIncInventoryDbContext _context;
+        public ComputerStatusRepository(CastleIncInventoryDbContext context)
         {
             _context = context;
         }
 
-        public async Task<uint> GetStatusId(OperacionalStatus operacionalStatus)
+        public async Task<uint> GetStatusId(OperationalStatus operacionalStatus)
         {
             var statuses = await _context.ComputerStatuses.ToListAsync();
             return statuses.First(s => s.LocalizedName == operacionalStatus).Id;
         }
 
-        public async Task<bool> IsStatusAlreadyAdded(uint computerId, OperacionalStatus operacionalStatus)
+        public async Task<bool> IsStatusAlreadyAdded(uint computerId, OperationalStatus operacionalStatus)
         {
             var computerStatuses = await _context.LinkComputerStatuses
                 .Include(l => l.ComputerStatus)

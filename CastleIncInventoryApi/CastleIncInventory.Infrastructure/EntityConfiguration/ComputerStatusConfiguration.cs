@@ -8,31 +8,11 @@ namespace CastleIncInventory.Infrastructure.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<ComputerStatus> entity)
         {
-            entity.ToTable("computer_status");
-
             entity.HasKey(e => e.Id);
 
-            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Id);
             entity.Property(e => e.LocalizedName)
-                .HasColumnName("localized_name")
-                .HasConversion(e => e.ToString(), e => EnumConverter(e));
-        }
-
-        private static OperacionalStatus EnumConverter(string state)
-        {
-            switch (state)
-            {
-                case "new":
-                    return OperacionalStatus.New;
-                case "in_use":
-                    return OperacionalStatus.InUse;
-                case "available":
-                    return OperacionalStatus.Available;
-                case "in_maintenance":
-                    return OperacionalStatus.InMaintance;
-                default:
-                    return OperacionalStatus.Retired;
-            }
+                .HasConversion(e => e.ToString(), e => (OperationalStatus)Enum.Parse(typeof(OperationalStatus), e));
         }
     }
 }

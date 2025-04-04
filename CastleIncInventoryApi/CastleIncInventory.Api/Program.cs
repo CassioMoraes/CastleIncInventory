@@ -30,7 +30,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<CastleIncInventoryContext>();
+builder.Services.AddDbContext<CastleIncInventoryDbContext>();
 builder.Services.AddScoped<IComputerManufacturerRepository,  ComputerManufacturerRepository>();
 builder.Services.AddScoped<IComputerRepository, ComputerRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();

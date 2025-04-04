@@ -36,19 +36,19 @@ namespace CastleIncInventory.Domain.Services
             return new Result();
         }
 
-        private OperacionalStatus GetOperacional(string status)
+        private OperationalStatus GetOperacional(string status)
         {
             if (string.IsNullOrEmpty(status))
-                return OperacionalStatus.New;
+                return OperationalStatus.New;
 
-            var currentDescription = OperacionalStatus.New;
+            var currentDescription = OperationalStatus.New;
 
-            foreach (var field in typeof(OperacionalStatus).GetFields())
+            foreach (var field in typeof(OperationalStatus).GetFields())
             {
                 if (field.GetCustomAttribute(typeof(DescriptionAttribute)) is DescriptionAttribute attribute)
                 {
                     if (attribute.Description == status)
-                        currentDescription = (OperacionalStatus)field.GetValue(null);
+                        currentDescription = (OperationalStatus)field.GetValue(null);
                 }
             }
 

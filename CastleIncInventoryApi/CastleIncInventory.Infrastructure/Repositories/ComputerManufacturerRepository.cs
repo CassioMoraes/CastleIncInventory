@@ -6,9 +6,9 @@ namespace CastleIncInventory.Domain.Repositories
 {
     public class ComputerManufacturerRepository : IComputerManufacturerRepository
     {
-        private readonly CastleIncInventoryContext _context;
+        private readonly CastleIncInventoryDbContext _context;
 
-        public ComputerManufacturerRepository(CastleIncInventoryContext context)
+        public ComputerManufacturerRepository(CastleIncInventoryDbContext context)
         {
             _context = context;
         }
